@@ -8,8 +8,8 @@ This project provides a GraphQL API for querying banks and branches. It's built 
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Usage](#usage)
-  - [Running the Development Server](#running-the-development-server)
-  - [GraphQL Queries](#graphql-queries)
+  - [Methodology](#methodology)
+  - [Example Queries](#example-queries)
 
 ## Getting Started
 
@@ -18,7 +18,7 @@ This project provides a GraphQL API for querying banks and branches. It's built 
 ### Prerequisites
 
 - Python (>=3.8)
-- Django (>=3.2)
+- Django (>=4.2)
 
 ### Installation
 
@@ -48,14 +48,22 @@ This project provides a GraphQL API for querying banks and branches. It's built 
 3. Access the GraphQL Playground: <br>
 Open your browser and navigate to `http://127.0.0.1/gql/` to access the GraphQL Playground.
 
-## GraphQL Queries
-The API provides the following queries:
+## Methodology
+### 1.  Defining GraphQL Types
+I began by creating GraphQL types for the Bank and Branch models. To achieve this, we utilized the `graphene_django.types.DjangoObjectType class`. This allowed us to establish a clear mapping between our existing Django models and the GraphQL schema. By setting up these types, we laid the foundation for interacting with the data through GraphQL queries.
 
-- `banks`: List all banks.
-- `branches`: List all branches along with corresponding bank details.
-- `branch_by_ifsc`: Retrieve a branch by its IFSC code.
+### 2. Designing GraphQL Queries
+The next step involved constructing the GraphQL queries that would enable users to retrieve information about banks and branches. We defined three main queries:
 
-Example Queries :
+- banks: This query retrieves a list of all banks present.
+- branches: This query fetches a list of all branches available along with the corresponding bank details.
+- branch_by_ifsc: This query lets users retrieve a specific branch by providing its unique IFSC code.
+
+### 3. Resolving the Queries
+To fulfill these queries with data, I implemented resolver functions for each query. These resolver functions acted as the bridge between the GraphQL queries and the Django models. Inside these functions, I utilized Django's Object-Relational Mapping (ORM) capabilities to fetch data from the underlying database.
+For instance, the resolver for the banks query used `Bank.objects.all()` to fetch all banks, and the resolver for `branch_by_ifsc` query utilized `Branch.objects.get(ifsc=ifsc)` to retrieve a branch based on its IFSC code.
+
+## Example Queries :
 1. List all banks
     ```graphql
     query {
