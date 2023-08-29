@@ -108,4 +108,5 @@ For instance, the resolver for the banks query used `Bank.objects.all()` to fetc
     }
     ```
 
+Time taken to complete the assignment : 3 hours
 
