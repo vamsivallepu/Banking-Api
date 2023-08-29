@@ -23,4 +23,4 @@ urlpatterns = [
 
     # endpoint to include bank_api urls
     path('', include('bank_api.urls')),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
