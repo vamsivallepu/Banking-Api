@@ -1,0 +1,1 @@
+web: gunicord banks.wsgi --log-file - 
