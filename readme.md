@@ -13,6 +13,8 @@ This project provides a GraphQL API for querying banks and branches. It's built 
 
 ## Getting Started
 
+- To experiment with the API, you can use the hosted version at [HERE](https://web-production-cb4e.up.railway.app/gql).
+
 ### Prerequisites
 
 - Python (>=3.8)
